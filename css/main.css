@@ -1,0 +1,198 @@
+/*======== Google Font ========*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
+/*======== Variables ========*/
+:root {
+	--main-color: #2980b9;
+	--red: #e74c3c;
+	--orange: #f39c12;
+	--black: #444;
+	--white: #fff;
+	--light-bg: #f5f5f5;
+	--light-color: #777;
+	--border: 0.2rem solid var(--black);
+	--box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/*======== Global ========*/
+/* Proyecto-DCU-SoftSchool */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	text-decoration: none;
+	outline: none;
+	border: none;
+}
+
+*::selection {
+	color: var(--white);
+	background-color: var(--main-color);
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+	height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+	background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--main-color);
+}
+
+html {
+	font-size: 62.5%;
+	overflow-x: hidden;
+}
+
+body {
+	background-color: var(--light-bg);
+}
+
+section {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.heading {
+	font-size: 4rem;
+	color: var(--black);
+	text-align: center;
+	margin-bottom: 2rem;
+	text-transform: capitalize;
+}
+
+.empty {
+	width: 100%;
+	font-size: 2rem;
+	padding: 1.5rem;
+	color: var(--red);
+	text-transform: capitalize;
+	text-align: center;
+	border-radius: 0.5rem;
+	border: var(--border);
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.btn,
+.delete-btn,
+.option-btn {
+	width: 100%;
+	display: block;
+	cursor: pointer;
+	color: var(--white);
+	font-size: 1.8rem;
+	padding: 1rem 3rem;
+	margin-top: 1rem;
+	border-radius: 0.5rem;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.btn {
+	background-color: var(--main-color);
+}
+
+.delete-btn {
+	background-color: var(--red);
+}
+
+.option-btn {
+	background-color: var(--orange);
+}
+
+.btn:hover,
+.delete-btn:hover,
+.option-btn:hover {
+	background-color: var(--black);
+}
+
+.flex-btn {
+	display: block;
+	gap: 1rem;
+}
+
+/*======== Section header ========*/
+.header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+	z-index: 1000;
+}
+
+.header .flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+.header .flex .logo {
+	font-size: 2.5rem;
+	color: var(--black);
+}
+
+.header .flex .logo span {
+	color: var(--main-color);
+}
+
+.header .flex .navbar a {
+	margin: 0 1rem;
+	font-size: 2rem;
+	color: var(--light-color);
+}
+
+.header .flex .navbar a:hover {
+	color: var(--main-color);
+	text-decoration: underline;
+}
+
+.header .flex .icons > * {
+	font-size: 2.5rem;
+	cursor: pointer;
+	margin-left: 1.5rem;
+	color: var(--light-color);
+}
+
+.header .flex .icons > *:hover {
+	color: var(--main-color);
+}
+
+.header .flex .profile {
+	position: absolute;
+	top: 125%;
+	right: 2rem;
+	width: 30rem;
+	padding: 2rem;
+	padding-top: 1rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+	display: none;
+	animation: fadeIn 0.3s linear;
+}
+
+.header .flex .profile p {
+	margin-bottom: 1rem;
+	font-size: 2rem;
+	text-align: center;
+	color: var(--black);
+}
+
+.header .flex .profile.active {
+	display: inline-block;
+}
+
+#menu-btn {
+	display: none;
+}
