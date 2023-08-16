@@ -15,7 +15,6 @@
 }
 
 /*======== Global ========*/
-/* Proyecto-DCU-SoftSchool */
 * {
 	margin: 0;
 	padding: 0;
@@ -118,6 +117,86 @@ section {
 	gap: 1rem;
 }
 
+.message {
+	display: flex;
+	position: sticky;
+	top: 0;
+	gap: 1rem;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--light-bg);
+}
+
+.message span {
+	font-size: 2rem;
+	color: var(--black);
+}
+
+.message i {
+	font-size: 2.5rem;
+	color: var(--red);
+	cursor: pointer;
+}
+
+.message i:hover {
+	color: var(--black);
+}
+
+/*======== Animation ========*/
+@keyframes fadeIn {
+	0% {
+		transform: translateY(1rem);
+	}
+}
+
+/*======== Admin login form section ========*/
+.form-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.form-container form {
+	background-color: var(--white);
+	border-radius: 0.5rem;
+	border: var(--border);
+	box-shadow: var(--box-shadow);
+	padding: 2rem;
+	text-align: center;
+	width: 50rem;
+}
+
+.form-container form h3 {
+	font-size: 2.5rem;
+	color: var(--black);
+	text-transform: capitalize;
+}
+
+.form-container form p {
+	margin: 1rem 0;
+	font-size: 2rem;
+	color: var(--light-color);
+}
+
+.form-container form p span {
+	color: var(--orange);
+}
+
+.form-container form .box {
+	width: 100%;
+	padding: 1.4rem;
+	margin: 1rem 0;
+	font-size: 1.8rem;
+	color: var(--black);
+	border: var(--border);
+	border-radius: 0.5rem;
+	background-color: var(--light-bg);
+}
+
 /*======== Section header ========*/
 .header {
 	position: sticky;
@@ -189,10 +268,396 @@ section {
 	color: var(--black);
 }
 
+.header .flex .profile img {
+	width: 100%;
+	height: 5rem;
+	object-fit: contain;
+	border-radius: 50%;
+	margin-bottom: 0.2rem;
+}
+
 .header .flex .profile.active {
 	display: inline-block;
 }
 
 #menu-btn {
 	display: none;
+}
+
+/*======== Section dashboard ========*/
+.dashboard .box-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+	gap: 1.5rem;
+	align-items: flex-start;
+}
+
+.dashboard .box-container .box {
+	padding: 1.5rem;
+	text-align: center;
+	border: var(--border);
+	box-shadow: var(--box-shadow);
+	border-radius: 0.5rem;
+	background-color: var(--white);
+}
+
+.dashboard .box-container .box h3 {
+	font-size: 2.7rem;
+	color: var(--black);
+}
+
+.dashboard .box-container .box h3 span {
+	font-size: 2rem;
+}
+
+.dashboard .box-container .box p {
+	padding: 1.5rem;
+	margin: 1rem 0;
+	font-size: 1.8rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	color: var(--light-color);
+	background-color: var(--light-bg);
+}
+
+/*======== Section Admin ========*/
+.add-admin form {
+	margin: 0 auto;
+	padding: 2rem;
+	max-width: 70rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.add-admin form .flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.add-admin form .flex .inputBox {
+	flex: 1 1 30rem;
+}
+
+.add-admin form .flex .box {
+	width: 100%;
+	padding: 1.4rem;
+	font-size: 1.8rem;
+	margin-top: 1rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	background-color: var(--light-bg);
+}
+
+.add-admin form span {
+	font-size: 2rem;
+	color: var(--light-color);
+}
+
+.add-admin form .select {
+	width: 100%;
+	padding: 1rem 1.4rem;
+	font-size: 2rem;
+	margin: 1rem 0;
+	color: var(--black);
+	border: var(--border);
+	border-radius: 0.5rem;
+	background-color: var(--light-bg);
+}
+
+/*======== Section show products ========*/
+.show-admin .box-container {
+	display: grid;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: flex-start;
+	grid-template-columns: repeat(auto-fit, 33rem);
+}
+
+.show-admin .box-container .box {
+	padding: 2rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.show-admin .box-container .box img {
+	width: 100%;
+	height: 20rem;
+	object-fit: contain;
+	margin-bottom: 1.5rem;
+}
+
+.show-admin .box-container .box .name {
+	font-size: 2rem;
+	color: var(--main-color);
+}
+
+.show-admin .box-container .box .lastname {
+	font-size: 2rem;
+	margin: 0.5rem 0;
+	color: var(--black);
+}
+
+.show-admin .box-container .box .details {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	color: var(--light-color);
+}
+
+/*======== Section Update Products ========*/
+.update-product form {
+	margin: 0 auto;
+	padding: 2rem;
+	max-width: 50rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.update-product form .image-container {
+	margin-bottom: 2rem;
+}
+
+.update-product form .image-container .main-image img {
+	width: 100%;
+	height: 20rem;
+	object-fit: contain;
+}
+
+.update-product form .image-container .sub-image {
+	display: flex;
+	gap: 1.5rem;
+	margin: 1rem 0;
+	justify-content: center;
+}
+
+.update-product form .image-container .sub-image img {
+	width: 8rem;
+	height: 8rem;
+	padding: 0.5rem;
+	object-fit: contain;
+	border: var(--border);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 0.3s linear;
+}
+
+.update-product form .image-container .sub-image img:hover {
+	transform: scale(1.1);
+}
+
+.update-product form .box {
+	width: 100%;
+	padding: 1.4rem;
+	margin: 1rem 0;
+	font-size: 1.8rem;
+	color: var(--black);
+	border: var(--border);
+	background-color: var(--light-bg);
+}
+
+.update-product form textarea {
+	resize: none;
+	height: 15rem;
+}
+
+.update-product form span {
+	font-size: 1.7rem;
+	color: var(--black);
+}
+
+/*======== Placed orders section  ========*/
+.pleced-orders .box-container {
+	display: grid;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: flex-start;
+	grid-template-columns: repeat(auto-fit, 33rem);
+}
+
+.pleced-orders .box-container .box {
+	padding: 2rem;
+	padding-top: 1rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.pleced-orders .box-container .box p {
+	padding: 0.3rem 0;
+	line-height: 1.5;
+	color: var(--black);
+	font-size: 1.7rem;
+}
+
+.pleced-orders .box-container .box p span {
+	color: var(--main-color);
+}
+
+/*======== Section accounts ========*/
+.accounts .box-container {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, 33rem);
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.accounts .box-container .box {
+	padding: 2rem;
+	padding-top: 1rem;
+	text-align: center;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.accounts .box-container .box p {
+	font-size: 1.8rem;
+	line-height: 1.5;
+	padding: 0.5rem 0;
+	color: var(--black);
+}
+
+.accounts .box-container .box p span {
+	color: var(--main-color);
+}
+
+/*======== Section messages ========*/
+.messages .box-container {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, 33rem);
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.messages .box-container .box {
+	padding: 2rem;
+	padding-top: 1rem;
+	border: var(--border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow);
+	background-color: var(--white);
+}
+
+.messages .box-container .box p {
+	font-size: 1.8rem;
+	line-height: 1.5;
+	padding: 0.5rem 0;
+	color: var(--black);
+}
+
+.messages .box-container .box p span {
+	color: var(--main-color);
+}
+
+/*======== Footer ========*/
+.footer {
+	background-color: var(--white);
+}
+
+.footer .box-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+	gap: 2rem;
+	align-items: flex-start;
+}
+
+.footer .box-container .box h3 {
+	font-size: 2rem;
+	color: var(--black);
+	margin-bottom: 2rem;
+	text-transform: capitalize;
+}
+
+.footer .box-container .box a {
+	display: block;
+	padding: 1rem 0;
+	font-size: 1.7rem;
+	color: var(--light-color);
+}
+
+.footer .credit {
+	padding: 2.5rem;
+	text-align: center;
+	font-size: 2rem;
+	border-top: var(--border);
+	padding-bottom: 3.5rem;
+}
+
+.footer .credit span {
+	color: var(--main-color);
+}
+
+/*======== Media queries ========*/
+@media (max-width: 991px) {
+	html {
+		font-size: 55%;
+	}
+}
+
+@media (max-width: 865px) {
+	#menu-btn {
+		display: inline-block;
+	}
+
+	.header .flex .navbar {
+		position: absolute;
+		top: 99%;
+		left: 0;
+		right: 0;
+		border-top: var(--border);
+		border-bottom: var(--border);
+		background-color: var(--white);
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+		transition: 0.3s linear;
+	}
+
+	.header .flex .navbar.active {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+
+	.header .flex .navbar a {
+		display: block;
+		margin: 2rem;
+	}
+}
+
+@media (max-width: 450px) {
+	html {
+		font-size: 50%;
+	}
+
+	.flex-btn {
+		flex-flow: column;
+		gap: 0;
+	}
+
+	.heading {
+		font-size: 3rem;
+	}
+
+	.show-products .box-container {
+		grid-template-columns: 1fr;
+	}
+
+	.pleced-orders .box-container {
+		grid-template-columns: 1fr;
+	}
+
+	.accounts .box-container {
+		grid-template-columns: 1fr;
+	}
+
+	.messages .box-container {
+		grid-template-columns: 1fr;
+	}
 }

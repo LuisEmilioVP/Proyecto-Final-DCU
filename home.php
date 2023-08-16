@@ -5,9 +5,9 @@ session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
-// if (!isset($admin_id)) {
-// header('location:admin_login.php');
-// }
+if (!isset($admin_id)) {
+header('location:./admin_login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,52 +37,27 @@ $admin_id = $_SESSION['admin_id'];
     <div class="box-container">
       <div class="box">
         <h3>Bienvenido</h3>
-        <a href="#" class="btn">Actualizar Perfil</a>
+        <img src="../images_cargadas/<?= $fetch_profile['Foto']; ?>" alt="" height="100">
+        <p><?= $fetch_profile['Nombre'];?></p>
+        <a href="update_pass.php" class="btn">Actualizar Clave</a>
       </div>
 
       <div class="box">
-
-        <p>Total de Pedidos</p>
-        <a href="pedidos_puestos.php" class="btn">Ver pedidos</a>
-      </div>
-
-      <div class="box">
-
-        <p>Pedidos Completados</p>
-        <a href="pedidos_puestos.php" class="btn">Ver pedidos</a>
-      </div>
-
-      <div class="box">
-
-        <p>Pedidos Realizados</p>
-        <a href="pedidos_puestos.php" class="btn">Ver pedidos</a>
-      </div>
-
-      <div class="box">
-
-        <p>Productos Agregados</p>
-        <a href="productos.php" class="btn">Ver Productos</a>
-      </div>
-
-      <div class="box">
-
-        <p>Usuarios normales</p>
-        <a href="cuentas_usuarios.php" class="btn">Ver Usuarios</a>
-      </div>
-
-      <div class="box">
-
-        <p>Usuarios Administradores</p>
-        <a href="admin_cuentas.php" class="btn">Ver Administradores</a>
-      </div>
-
-      <div class="box">
-
-        <p>Nuevos Mensajes</p>
-        <a href="mensajes.php" class="btn">Ver Mensajes</a>
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `administrativo`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <h3><?= $number_of_admins; ?></h3>
+        <p>Administradores Agregados</p>
+        <a href="admin_profile.php" class="btn">Ver Administradores</a>
       </div>
     </div>
   </section>
+
+  <?php
+  include './components/footer.php';
+  ?>
   <!-- Admin dashboard section end -->
   <!-- Custom js file link -->
   <script src="./js/main.js"></script>
