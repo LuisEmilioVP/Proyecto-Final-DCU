@@ -45,10 +45,19 @@ if(isset($_GET['delete'])){
     <h1 class="heading">Cuentas de administrador</h1>
     <div class="box-container">
       <div class="box">
-        <p>Agregar nuevo administrador</p>
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `administrativo`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <p>Administradores agregadas</p>
+        <p><?= $number_of_admins; ?></p>
         <a href="registro_admin.php" class="option-btn">registrar administrador</a>
       </div>
-
+    </div>
+    <br>
+    <br>
+    <div class="box-container">
       <?php
       $select_accounts = $connect->prepare("SELECT * FROM `administrativo`");
       $select_accounts->execute();
@@ -57,8 +66,13 @@ if(isset($_GET['delete'])){
       ?>
       <div class="box">
         <img src="../../assets/images_cargadas/<?= $fetch_accounts['Foto']; ?>" alt="" width="100">
-        <p> Nombre administrador: <span><?= $fetch_accounts['Nombre']; ?></span> </p>
+        <p>Administrador: <span><?= $fetch_accounts['Nombre'], ' ', $fetch_accounts['Apellido']; ?></span> </p>
+        <div class="details"><span><?= $fetch_accounts['Genero']; ?></span></div>
+        <div class="details"><span><?= $fetch_accounts['Correo']; ?></span></div>
+        <div class="details"><span><?= $fetch_accounts['Telefono']; ?></span></div>
+        <div class="details"><span><?= $fetch_accounts['Cargo']; ?></span></div>
         <div class="flex-btn">
+
           <a href="update_profile.php?update=<?= $fetch_accounts['IdAmin']; ?>" class="option-btn">Actualizar</a>
 
           <a href="admin_profile.php?delete=<?= $fetch_accounts['IdAmin']; ?>"

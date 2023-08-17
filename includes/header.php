@@ -18,17 +18,18 @@
 
       $Index = $isIndex ? './index' : '../../index.php';
       $Aulas = $isIndex ? './pages/aulas/aulas_profile.php' : '../aulas/aulas_profile.php';
+      $Materias = $isIndex ? './pages/materias/materias_profile.php' : '../materias/materias_profile.php';
       $Admin = $isIndex ? './pages/admin/admin_profile.php' : '../admin/admin_profile.php';
       $Profesor = $isIndex ? './pages/profesores/profesores_profile.php' : '../profesores/profesores_profile.php';
       $Estudiante = $isIndex ? './pages/estudiantes/estudiantes_profile.php' : '../estudiantes/estudiantes_profile.php';
     ?>
 
     <a href="<?php echo $Index; ?>" class="logo">Admin <span>Panel</span></a>
-    
+
     <nav class="navbar">
       <a href="<?php echo $Index; ?>">Inicio</a>
       <a href="<?php echo $Aulas; ?>">Aulas</a>
-      <a href="#">Materias</a>
+      <a href="<?php echo $Materias; ?>">Materias</a>
       <a href="<?php echo $Profesor; ?>">Profesores</a>
       <a href="<?php echo $Estudiante; ?>">Estudiantes</a>
       <a href="<?php echo $Admin; ?>">Administradores</a>
@@ -55,7 +56,7 @@
       </div>
 
       <div class="flex-btn">
-      <?php
+        <?php
         $isAdmin= strpos($_SERVER['REQUEST_URI'], '/pages/admin/') !== false;
 
         $Login = $isIndex 

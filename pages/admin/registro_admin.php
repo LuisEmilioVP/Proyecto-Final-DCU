@@ -165,45 +165,6 @@ if (isset($_GET['delete'])) {
     </form>
   </section>
   <!-- Add Admin section end -->
-
-  <!-- Show products section starts -->
-  <section class="show-admin">
-    <h1 class="heading">Administradores Agregados</h1>
-    <div class="box-container">
-      <?php 
-        $show_admin = $connect->prepare("SELECT * FROM `administrativo`");
-        $show_admin->execute();
-        if ($show_admin->rowCount() > 0) {
-          while ($fetch_admin = $show_admin->fetch(PDO::FETCH_ASSOC)) {
-      ?>
-      <div class="box">
-        <img src="../../assets/images_cargadas/<?= $fetch_admin['Foto']; ?>" alt="">
-        <div class="name"><span><?= $fetch_admin['Nombre']; ?></span></div>
-        <div class="lastname"><?= $fetch_admin['Apellido']; ?></div>
-        <div class="details"><span><?= $fetch_admin['Genero']; ?></span></div>
-        <div class="details"><span><?= $fetch_admin['Correo']; ?></span></div>
-        <div class="details"><span><?= $fetch_admin['Telefono']; ?></span></div>
-
-        <div class="flex-btn">
-          <?php
-            if($fetch_admin['IdAmin'] == $admin_id){
-              echo '<a href="update_profile.php" class="option-btn">Actualizar</a>';
-            }
-          ?>
-
-          <a href="registro_admin.php?delete=<?= $fetch_admin['IdAmin']; ?>" class="delete-btn"
-            onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
-        </div>
-      </div>
-      <?php 
-          }
-        }else{
-          echo '<p class="empty">¡Aún no se han añadido productos!</p>';
-        }
-      ?>
-    </div>
-  </section>
-  <!-- Show products section ands -->
   <?php
   include '../../includes/footer.php';
   ?>

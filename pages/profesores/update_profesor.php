@@ -43,13 +43,13 @@
     $admin_image = filter_var($admin_image, FILTER_SANITIZE_STRING);
     $image_size = $_FILES['admin_image']['size'];
     $image_tmp_name = $_FILES['admin_image']['tmp_name'];
-    $image_folder = 'images_cargadas/'.$admin_image;
+    $image_folder = '../../assets/images_cargadas/'.$admin_image;
 
     if(!empty($admin_image)){
       if($image_size > 2000000){
         $message[] = '¡El tamaño de la imagen es demasiado grande!';
       }else{
-        $update_image = $connect->prepare("UPDATE `administrativo` SET Foto = ? WHERE IdAmin = ?");
+        $update_image = $connect->prepare("UPDATE `profesor` SET Foto = ? WHERE IdProfesor = ?");
         $update_image->execute([$admin_image, $admin_id]);
         move_uploaded_file($image_tmp_name, $image_folder);
         unlink('../../assets/images_cargadas/'.$old_admin_image);
@@ -143,7 +143,7 @@
       <input type="file" name="admin_image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">
       <div class="flex-btn">
         <input type="submit" name="update" value="Actualizar" class="btn">
-        <a href="registro_admin.php" class="option-btn">Regresa</a>
+        <a href="profesores_profile.php" class="option-btn">Regresa</a>
       </div>
     </form>
     <?php 

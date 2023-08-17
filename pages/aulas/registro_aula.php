@@ -116,8 +116,8 @@ if(isset($_POST['add_aula'])){
           </select>
         </div>
 
-
         <input type="submit" value="Agregar Administrador" class="btn" name="add_aula">
+        <a href="aulas_profile.php" class="option-btn">Regresa</a>
       </div>
     </form>
   </section>

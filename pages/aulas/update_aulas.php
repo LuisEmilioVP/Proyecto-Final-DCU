@@ -112,7 +112,7 @@
 
       <div class="flex-btn">
         <input type="submit" name="update" value="Actualizar" class="btn">
-        <a href="registro_admin.php" class="option-btn">Regresa</a>
+        <a href="aulas_profile.php" class="option-btn">Regresa</a>
       </div>
     </form>
     <?php 

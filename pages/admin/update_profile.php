@@ -41,7 +41,7 @@
     $admin_image = filter_var($admin_image, FILTER_SANITIZE_STRING);
     $image_size = $_FILES['admin_image']['size'];
     $image_tmp_name = $_FILES['admin_image']['tmp_name'];
-    $image_folder = 'images_cargadas/'.$admin_image;
+    $image_folder = '../../assets/images_cargadas/'.$admin_image;
 
     if(!empty($admin_image)){
       if($image_size > 2000000){

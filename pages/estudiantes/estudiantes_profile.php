@@ -49,26 +49,26 @@ if(isset($_GET['delete'])){
   <section class="accounts">
     <h1 class="heading">Estudiantes</h1>
     <div class="box-container">
-        <div class="box">
-            <p>Agregar nuevo estudiante</p>
-            <a href="registro_estudiante.php" class="option-btn">registrar estudiante</a>
-        </div>
-        <?php 
+      <div class="box">
+        <p>Agregar nuevo estudiante</p>
+        <a href="registro_estudiante.php" class="option-btn">registrar estudiante</a>
+      </div>
+      <?php 
             $show_admin = $connect->prepare("SELECT * FROM `estudiante`");
             $show_admin->execute();
             if ($show_admin->rowCount() > 0) {
             while ($fetch_admin = $show_admin->fetch(PDO::FETCH_ASSOC)) {
         ?>
-        <div class="box">
-            <img src="../../assets/images_cargadas/<?= $fetch_admin['Foto']; ?>" width="100" alt="">
-            <p> Nombre: <span><?= $fetch_admin['Nombre'] ." ". $fetch_admin['Apellido']; ?></span> </p>
-            <div class="details"><span><?= $fetch_admin['Correo']; ?></span></div>
-            <div class="details"><span><?= $fetch_admin['Telefono']; ?></span></div>
-            
-            <a href="update_estudiante.php?update=<?= $fetch_admin['IdEstudiante']; ?>" class="option-btn">Actualizar</a>
-            <a href="registro_estudiante.php?delete=<?= $fetch_admin['IdEstudiante']; ?>" class="delete-btn"
-                onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
-        </div>
+      <div class="box">
+        <img src="../../assets/images_cargadas/<?= $fetch_admin['Foto']; ?>" width="100" alt="">
+        <p> Nombre: <span><?= $fetch_admin['Nombre'] ." ". $fetch_admin['Apellido']; ?></span> </p>
+        <div class="details"><span><?= $fetch_admin['Correo']; ?></span></div>
+        <div class="details"><span><?= $fetch_admin['Telefono']; ?></span></div>
+
+        <a href="update_estudiante.php?update=<?= $fetch_admin['IdEstudiante']; ?>" class="option-btn">Actualizar</a>
+        <a href="registro_estudiante.php?delete=<?= $fetch_admin['IdEstudiante']; ?>" class="delete-btn"
+          onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
+      </div>
     </div>
     <?php 
             }

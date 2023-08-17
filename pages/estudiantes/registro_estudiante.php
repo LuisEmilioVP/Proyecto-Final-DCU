@@ -127,8 +127,8 @@ if (isset($_GET['delete'])) {
 
         <div class="inputBox">
           <span>Teléfono (requerido)</span>
-          <input type="text" name="phone" class="box" maxlelegth="100"
-            placeholder="Ingrese el teléfono del estudiante" required>
+          <input type="text" name="phone" class="box" maxlelegth="100" placeholder="Ingrese el teléfono del estudiante"
+            required>
         </div>
 
         <div class="inputBox">

@@ -50,9 +50,19 @@ if(isset($_GET['delete'])){
     <h1 class="heading">Profesores</h1>
     <div class="box-container">
       <div class="box">
-        <p>Agregar nuevo profesor</p>
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `profesor`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <p>Profesores agregadas</p>
+        <p><?= $number_of_admins; ?></p>
         <a href="registro_profesor.php" class="option-btn">registrar profesor</a>
       </div>
+    </div>
+    <br>
+    <br>
+    <div class="box-container">
       <?php 
             $show_admin = $connect->prepare("SELECT * FROM `profesor`");
             $show_admin->execute();

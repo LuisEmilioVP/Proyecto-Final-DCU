@@ -368,7 +368,7 @@ section {
 }
 
 /*======== Section show products ========*/
-.show-admin .box-container {
+.accounts .box-container {
 	display: grid;
 	gap: 1.5rem;
 	justify-content: center;
@@ -376,7 +376,7 @@ section {
 	grid-template-columns: repeat(auto-fit, 33rem);
 }
 
-.show-admin .box-container .box {
+.accounts .box-container .box {
 	padding: 2rem;
 	border: var(--border);
 	border-radius: 0.5rem;
@@ -384,25 +384,25 @@ section {
 	background-color: var(--white);
 }
 
-.show-admin .box-container .box img {
+.accounts .box-container .box img {
 	width: 100%;
 	height: 20rem;
 	object-fit: contain;
 	margin-bottom: 1.5rem;
 }
 
-.show-admin .box-container .box .name {
+.accounts .box-container .box .name {
 	font-size: 2rem;
 	color: var(--main-color);
 }
 
-.show-admin .box-container .box .lastname {
+.accounts .box-container .box .lastname {
 	font-size: 2rem;
 	margin: 0.5rem 0;
 	color: var(--black);
 }
 
-.show-admin .box-container .box .details {
+.accounts .box-container .box .details {
 	font-size: 1.6rem;
 	line-height: 1.5;
 	color: var(--light-color);
@@ -566,43 +566,43 @@ section {
 
 /*======== Footer ========*/
 .footer {
-    padding: 10px;
-    background-color: var(--white);
-    margin-top: auto; /* Empuja el footer hacia abajo */
-    text-align: center; /* Centra el contenido del footer */
-    border-top: var(--border);
-    width: 100%; /* Opcional: asegura que el footer ocupe todo el ancho */
+	padding: 10px;
+	background-color: var(--white);
+	margin-top: auto; /* Empuja el footer hacia abajo */
+	text-align: center; /* Centra el contenido del footer */
+	border-top: var(--border);
+	width: 100%; /* Opcional: asegura que el footer ocupe todo el ancho */
 }
 
 .footer .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-    gap: 2rem;
-    align-items: flex-start;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+	gap: 2rem;
+	align-items: flex-start;
 }
 
 .footer .box-container .box h3 {
-    font-size: 2rem;
-    color: var(--black);
-    margin-bottom: 2rem;
-    text-transform: capitalize;
+	font-size: 2rem;
+	color: var(--black);
+	margin-bottom: 2rem;
+	text-transform: capitalize;
 }
 
 .footer .box-container .box a {
-    display: block;
-    padding: 1rem 0;
-    font-size: 1.7rem;
-    color: var(--light-color);
+	display: block;
+	padding: 1rem 0;
+	font-size: 1.7rem;
+	color: var(--light-color);
 }
 
 .footer .credit {
-    text-align: center;
-    font-size: 2rem;
-    padding: 2.5rem 0 3.5rem;
+	text-align: center;
+	font-size: 2rem;
+	padding: 2.5rem 0 3.5rem;
 }
 
 .footer .credit span {
-    color: var(--main-color);
+	color: var(--main-color);
 }
 /*======== Media queries ========*/
 @media (max-width: 991px) {

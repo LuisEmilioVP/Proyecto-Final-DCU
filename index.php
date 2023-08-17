@@ -41,7 +41,10 @@ if (!isset($admin_id)) {
         <p><?= $fetch_profile['Nombre'];?></p>
         <a href="pages/admin/update_pass.php" class="btn">Actualizar Clave</a>
       </div>
-
+    </div>
+    <br>
+    <br>
+    <div class="box-container">
       <div class="box">
         <?php 
           $select_admins = $connect->prepare("SELECT * FROM `aula`");
@@ -51,6 +54,39 @@ if (!isset($admin_id)) {
         <h3><?= $number_of_admins; ?></h3>
         <p>Aulas Agregados</p>
         <a href="pages/aulas/aulas_profile.php" class="btn">Ver Aulas</a>
+      </div>
+
+      <div class="box">
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `materia`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <h3><?= $number_of_admins; ?></h3>
+        <p>Materias Agregados</p>
+        <a href="pages/materias/materias_profile.php" class="btn">Ver Materias</a>
+      </div>
+
+      <div class="box">
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `profesor`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <h3><?= $number_of_admins; ?></h3>
+        <p>Profesores Agregados</p>
+        <a href="pages/profesores/profesores_profile.php" class="btn">Ver Profesores</a>
+      </div>
+
+      <div class="box">
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `estudiante`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <h3><?= $number_of_admins; ?></h3>
+        <p>Estudiantes Agregados</p>
+        <a href="pages/estudiantes/estudiantes_profile.php" class="btn">Ver Estudiantes</a>
       </div>
 
       <div class="box">

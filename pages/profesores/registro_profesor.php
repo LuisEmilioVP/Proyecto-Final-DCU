@@ -101,8 +101,8 @@ if (isset($_GET['delete'])) {
 
         <div class="inputBox">
           <span>Apellido (requerido)</span>
-          <input type="text" name="lastname" class="box" maxlelegth="100"
-            placeholder="Ingrese el apellido del profesor" required>
+          <input type="text" name="lastname" class="box" maxlelegth="100" placeholder="Ingrese el apellido del profesor"
+            required>
         </div>
 
         <div class="inputBox">
@@ -128,8 +128,8 @@ if (isset($_GET['delete'])) {
 
         <div class="inputBox">
           <span>Teléfono (requerido)</span>
-          <input type="text" name="phone" class="box" maxlelegth="100"
-            placeholder="Ingrese el teléfono del profesor" required>
+          <input type="text" name="phone" class="box" maxlelegth="100" placeholder="Ingrese el teléfono del profesor"
+            required>
         </div>
 
         <div class="inputBox">
@@ -151,6 +151,7 @@ if (isset($_GET['delete'])) {
         </div>
 
         <input type="submit" value="Agregar profesor" class="btn" name="add_profesor">
+        <a href="profesores_profile.php" class="option-btn">Regresa</a>
       </div>
     </form>
   </section>
