@@ -43,15 +43,6 @@ if(isset($_POST['add_aula'])){
         $message[] = 'Materia seleccionada no válida!';
     }
 }
-
-
-if (isset($_GET['delete_aula'])) {
-
-};
-
-if(isset($_POST['update_aula'])){
-
-};
 ?>
 
 <!DOCTYPE html>

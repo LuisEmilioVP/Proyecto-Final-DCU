@@ -9,9 +9,15 @@ if (!isset($admin_id)) {
   header('location:../admin/admin_login.php');
 };
 
-/* if(isset($_GET['delete'])){
- 
-} */
+if (isset($_GET['delete'])) {
+    $aula_id = $_GET['delete'];
+
+    $delete_aula = $connect->prepare("DELETE FROM `aula` WHERE IdAula = ?");
+    $delete_aula->execute([$aula_id]);
+
+    header('location:aulas_profile.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,10 +87,10 @@ if (!isset($admin_id)) {
           <td><?php echo $fetch_aula['Tipo']; ?></td>
           <td><?php echo $materia['NombreMateria']; ?></td>
           <td>
-            <a href="aulas_profile?delete=<?php echo $fetch_aula['IdAula']; ?>" class="delete-btn"
+            <a href="aulas_profile.php?delete=<?php echo $fetch_aula['IdAula']; ?>" class="delete-btn"
               onclick="return confirm('¿Estás seguro de que quieres eliminar esto?');"> <i class="fas fa-trash"></i></a>
 
-            <a href="aulas_profile?edit=<?php echo $fetch_aula['IdAula']; ?>" class="option-btn"> <i
+            <a href="update_aulas.php?update=<?php echo $fetch_aula['IdAula']; ?>" class="option-btn"> <i
                 class="fas fa-edit"></i></a>
           </td>
         </tr>

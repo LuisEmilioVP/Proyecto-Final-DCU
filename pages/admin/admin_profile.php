@@ -11,9 +11,11 @@ if (!isset($admin_id)) {
 
 if(isset($_GET['delete'])){
   $delete_id = $_GET['delete'];
+
   $delete_admins = $connect->prepare("DELETE FROM `administrativo` WHERE IdAmin = ?");
   $delete_admins->execute([$delete_id]);
-  header('location:admin_login.php');
+
+  header('location:admin_profile.php');
 }
 ?>
 
@@ -57,13 +59,10 @@ if(isset($_GET['delete'])){
         <img src="../../assets/images_cargadas/<?= $fetch_accounts['Foto']; ?>" alt="" width="100">
         <p> Nombre administrador: <span><?= $fetch_accounts['Nombre']; ?></span> </p>
         <div class="flex-btn">
-          <a href="./update_profile.php?delete=<?= $fetch_accounts['IdAmin']; ?>"
+          <a href="update_profile.php?update=<?= $fetch_accounts['IdAmin']; ?>" class="option-btn">Actualizar</a>
+
+          <a href="admin_profile.php?delete=<?= $fetch_accounts['IdAmin']; ?>"
             onclick="return confirm('¿Quieres eliminar esta cuenta?')" class="delete-btn">Eliminar</a>
-          <?php
-            if($fetch_accounts['IdAmin'] == $admin_id){
-              echo '<a href="update_profile.php?update= .$admin_id. " class="option-btn">Actualizar</a>';
-            }
-          ?>
         </div>
       </div>
       <?php

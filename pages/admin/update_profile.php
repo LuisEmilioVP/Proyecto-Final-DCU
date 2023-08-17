@@ -10,6 +10,9 @@
   };
 
   if(isset($_POST['update'])){
+
+    $id= $_POST['id'];
+    
     $name = $_POST['name'];
     $name = filter_var($name, FILTER_SANITIZE_STRING);
 
@@ -29,7 +32,7 @@
     $post = filter_var($post, FILTER_SANITIZE_STRING);
 
      $update_admin = $connect->prepare("UPDATE `administrativo` SET Nombre = ?, Apellido = ?, Genero = ?, Correo = ?, Telefono = ?, Cargo = ? WHERE IdAmin = ?");
-     $update_admin->execute([$name, $lastname, $gender, $email, $phone, $post, $admin_id]);
+     $update_admin->execute([$name, $lastname, $gender, $email, $phone, $post, $id]);
 
      $message[] = 'Administrador actualizado con éxito!';
 
@@ -88,6 +91,9 @@
       while ($fetch_admin = $show_admin->fetch(PDO::FETCH_ASSOC)) {
     ?>
     <form action="" method="post" enctype="multipart/form-data">
+
+      <input type="hidden" name="id" value="<?= $fetch_admin['IdAmin']; ?>">
+
       <input type="hidden" name="old_admin_image" value="<?= $fetch_admin['Foto']; ?>">
 
       <div class="image-container">

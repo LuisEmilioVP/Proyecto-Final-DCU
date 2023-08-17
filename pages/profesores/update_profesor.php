@@ -120,8 +120,8 @@
       </select>
 
       <span>Actualizar Edad</span>
-      <input type="number" name="age" class="box" placeholder="Ingrese la edad"
-        value="<?= $fetch_admin['Edad']; ?>" required>
+      <input type="number" name="age" class="box" placeholder="Ingrese la edad" value="<?= $fetch_admin['Edad']; ?>"
+        required>
 
       <span>Actualizar Correo</span>
       <input type="text" name="email" class="box" maxlength="100" placeholder="Ingrese el correo"
@@ -131,11 +131,11 @@
       <input type="text" name="phone" class="box" maxlength="100" placeholder="Ingrese el correo"
         value="<?= $fetch_admin['Telefono']; ?>" required>
 
-        <span>Actualizar Dirección</span>
+      <span>Actualizar Dirección</span>
       <input type="text" name="direction" class="box" maxlength="100" placeholder="Ingrese la dirección"
         value="<?= $fetch_admin['Direccion']; ?>" required>
 
-        <span>Actualizar Especialidad</span>
+      <span>Actualizar Especialidad</span>
       <input type="text" name="specialty" class="box" maxlength="100" placeholder="Ingrese la especialidad"
         value="<?= $fetch_admin['Especialidad']; ?>" required>
 
