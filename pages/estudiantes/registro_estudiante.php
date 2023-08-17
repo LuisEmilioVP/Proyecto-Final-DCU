@@ -60,7 +60,7 @@ if (isset($_GET['delete'])) {
   $delete_product = $connect->prepare("DELETE FROM `estudiante` WHERE IdEstudiante = ?");
   $delete_product->execute([$delete_id]);
   
-  header('location:../registro_estudiante.php');
+  header('location:../estudiantes.profile.php');
 };
 ?>
 
