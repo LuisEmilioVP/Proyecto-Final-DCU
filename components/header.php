@@ -17,7 +17,7 @@
 
     <nav class="navbar">
       <a href="home.php">Inicio</a>
-      <a href="#">Aulas</a>
+      <a href="aulas_profile.php">Aulas</a>
       <a href="#">Materias</a>
       <a href="#">Profesores</a>
       <a href="#">Estudiantes</a>

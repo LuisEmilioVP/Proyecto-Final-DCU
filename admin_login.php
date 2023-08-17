@@ -3,7 +3,7 @@ include './components/connect.php';
 
 session_start();
 
-/* User and Password default: Juan, 12345 */
+
 if(isset($_POST['submit'])){
   $name = $_POST['name'];
   $name = filter_var($name, FILTER_SANITIZE_STRING);

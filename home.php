@@ -6,7 +6,7 @@ session_start();
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-header('location:./admin_login.php');
+  header('location:./admin_login.php');
 }
 ?>
 
@@ -40,6 +40,17 @@ header('location:./admin_login.php');
         <img src="../images_cargadas/<?= $fetch_profile['Foto']; ?>" alt="" height="100">
         <p><?= $fetch_profile['Nombre'];?></p>
         <a href="update_pass.php" class="btn">Actualizar Clave</a>
+      </div>
+
+      <div class="box">
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `aula`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <h3><?= $number_of_admins; ?></h3>
+        <p>Aulas Agregados</p>
+        <a href="aulas_profile.php" class="btn">Ver Aulas</a>
       </div>
 
       <div class="box">

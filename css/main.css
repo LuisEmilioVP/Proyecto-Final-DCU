@@ -408,6 +408,40 @@ section {
 	color: var(--light-color);
 }
 
+/* ========== Table Products ========== */
+.display__product-table table {
+	width: 100%;
+	text-align: center;
+}
+
+.display__product-table table thead th {
+	padding: 1.5rem;
+	font-size: 2rem;
+	background-color: var(--black);
+	color: var(--white);
+}
+
+.display__product-table table td {
+	padding: 1.5rem;
+	font-size: 2rem;
+	color: var(--black);
+}
+.display__product-table table td:first-child {
+	padding: 0;
+}
+
+.display__product-table table tr:nth-child(odd) {
+	background-color: var(--bg-color);
+}
+
+.display__product-table .empty {
+	margin-bottom: 2rem;
+	text-align: center;
+	background-color: var(--bg-color);
+	padding: 1.5rem;
+	font-size: 2rem;
+}
+
 /*======== Section Update Products ========*/
 .update-product form {
 	margin: 0 auto;
@@ -527,35 +561,6 @@ section {
 }
 
 .accounts .box-container .box p span {
-	color: var(--main-color);
-}
-
-/*======== Section messages ========*/
-.messages .box-container {
-	display: grid;
-	gap: 1.5rem;
-	grid-template-columns: repeat(auto-fit, 33rem);
-	justify-content: center;
-	align-items: flex-start;
-}
-
-.messages .box-container .box {
-	padding: 2rem;
-	padding-top: 1rem;
-	border: var(--border);
-	border-radius: 0.5rem;
-	box-shadow: var(--box-shadow);
-	background-color: var(--white);
-}
-
-.messages .box-container .box p {
-	font-size: 1.8rem;
-	line-height: 1.5;
-	padding: 0.5rem 0;
-	color: var(--black);
-}
-
-.messages .box-container .box p span {
 	color: var(--main-color);
 }
 
