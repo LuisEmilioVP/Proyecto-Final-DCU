@@ -1,12 +1,12 @@
 <?php
-include './components/connect.php';
+include '../../includes/connect.php';
 
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-  header('location:admin_login.php');
+  header('location:../admin/admin_login.php');
 };
 
 if(isset($_POST['add_aula'])){
@@ -58,7 +58,7 @@ if(isset($_POST['update_aula'])){
 <html lang="en">
 
 <?php
-  include './components/header.php';
+  include '../../includes/header.php';
 ?>
 
 <head>
@@ -71,7 +71,7 @@ if(isset($_POST['update_aula'])){
   <!-- Font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Custom css file link  -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
@@ -133,10 +133,10 @@ if(isset($_POST['update_aula'])){
   <!-- Add Aula section end -->
 
   <?php
-  include './components/footer.php';
+  include '../../includes/footer.php';
   ?>
   <!-- Custom js file link -->
-  <script src="./js/main.js"></script>
+  <script src="../../assets/js/main.js"></script>
 </body>
 
 </html>

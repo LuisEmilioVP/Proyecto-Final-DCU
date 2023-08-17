@@ -1,12 +1,12 @@
 <?php
-include './components/connect.php';
+include '../../includes/connect.php';
 
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-  header('location:admin_login.php');
+  header('location:../admin_login.php');
 };
 
 if(isset($_POST['add_admin'])){
@@ -32,7 +32,7 @@ if(isset($_POST['add_admin'])){
   $admin_image = filter_var($admin_image, FILTER_SANITIZE_STRING);
   $image_size = $_FILES['admin_image']['size'];
   $image_tmp_name = $_FILES['admin_image']['tmp_name'];
-  $image_folder = 'images_cargadas/'.$admin_image;
+  $image_folder = '../../assets/images_cargadas/'.$admin_image;
   
   $pass = sha1($_POST['pass']);
   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
@@ -63,12 +63,12 @@ if (isset($_GET['delete'])) {
   $delete_product_image->execute([$delete_id]);
   
   $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
-  unlink('images_cargadas/'.$fetch_delete_image['Foto']);
+  unlink('../../assets/images_cargadas/'.$fetch_delete_image['Foto']);
 
   $delete_product = $connect->prepare("DELETE FROM `administrativo` WHERE IdAmin = ?");
   $delete_product->execute([$delete_id]);
   
-  header('location:registro_admin.php');
+  header('location:../registro_admin.php');
 };
 ?>
 
@@ -76,7 +76,7 @@ if (isset($_GET['delete'])) {
 <html lang="en">
 
 <?php
-  include './components/header.php';
+  include '../../includes/header.php';
 ?>
 
 <head>
@@ -89,7 +89,7 @@ if (isset($_GET['delete'])) {
   <!-- Font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Custom css file link  -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
@@ -177,7 +177,7 @@ if (isset($_GET['delete'])) {
           while ($fetch_admin = $show_admin->fetch(PDO::FETCH_ASSOC)) {
       ?>
       <div class="box">
-        <img src="images_cargadas/<?= $fetch_admin['Foto']; ?>" alt="">
+        <img src="../../assets/images_cargadas/<?= $fetch_admin['Foto']; ?>" alt="">
         <div class="name"><span><?= $fetch_admin['Nombre']; ?></span></div>
         <div class="lastname"><?= $fetch_admin['Apellido']; ?></div>
         <div class="details"><span><?= $fetch_admin['Genero']; ?></span></div>
@@ -205,10 +205,10 @@ if (isset($_GET['delete'])) {
   </section>
   <!-- Show products section ands -->
   <?php
-  include './components/footer.php';
+  include '../../includes/footer.php';
   ?>
   <!-- Custom js file link -->
-  <script src="./js/main.js"></script>
+  <script src="../../assets/js/main.js"></script>
 </body>
 
 </html>

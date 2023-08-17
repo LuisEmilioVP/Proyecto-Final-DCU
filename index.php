@@ -1,12 +1,12 @@
 <?php
-include './components/connect.php';
+include 'includes/connect.php';
 
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-  header('location:./admin_login.php');
+  header('location:pages/admin/admin_login.php');
 }
 ?>
 
@@ -14,7 +14,7 @@ if (!isset($admin_id)) {
 <html lang="en">
 
 <?php
-  include './components/header.php';
+  include 'includes/header.php';
 ?>
 
 <head>
@@ -27,7 +27,7 @@ if (!isset($admin_id)) {
   <!-- Font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Custom css file link  -->
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
@@ -37,9 +37,9 @@ if (!isset($admin_id)) {
     <div class="box-container">
       <div class="box">
         <h3>Bienvenido</h3>
-        <img src="../images_cargadas/<?= $fetch_profile['Foto']; ?>" alt="" height="100">
+        <img src="assets/images_cargadas/<?= $fetch_profile['Foto']; ?>" alt="" height="100">
         <p><?= $fetch_profile['Nombre'];?></p>
-        <a href="update_pass.php" class="btn">Actualizar Clave</a>
+        <a href="pages/admin/update_pass.php" class="btn">Actualizar Clave</a>
       </div>
 
       <div class="box">
@@ -50,7 +50,7 @@ if (!isset($admin_id)) {
         ?>
         <h3><?= $number_of_admins; ?></h3>
         <p>Aulas Agregados</p>
-        <a href="aulas_profile.php" class="btn">Ver Aulas</a>
+        <a href="pages/aulas/aulas_profile.php" class="btn">Ver Aulas</a>
       </div>
 
       <div class="box">
@@ -61,17 +61,17 @@ if (!isset($admin_id)) {
         ?>
         <h3><?= $number_of_admins; ?></h3>
         <p>Administradores Agregados</p>
-        <a href="admin_profile.php" class="btn">Ver Administradores</a>
+        <a href="pages/admin/admin_profile.php" class="btn">Ver Administradores</a>
       </div>
     </div>
   </section>
 
   <?php
-  include './components/footer.php';
+  include 'includes/footer.php';
   ?>
   <!-- Admin dashboard section end -->
   <!-- Custom js file link -->
-  <script src="./js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

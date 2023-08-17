@@ -1,5 +1,5 @@
 <?php
-include './components/connect.php';
+include '../../includes/connect.php';
 
 session_start();
 
@@ -21,7 +21,7 @@ if(isset($_GET['delete'])){
 <html lang="en">
 
 <?php
-  include './components/header.php';
+  include '../../includes/header.php';
 ?>
 
 <head>
@@ -34,7 +34,7 @@ if(isset($_GET['delete'])){
   <!-- Font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Custom css file link  -->
-  <link rel="stylesheet" href="./css//main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
@@ -54,14 +54,14 @@ if(isset($_GET['delete'])){
         while($fetch_accounts = $select_accounts->fetch(PDO::FETCH_ASSOC)){   
       ?>
       <div class="box">
-        <img src="images_cargadas/<?= $fetch_accounts['Foto']; ?>" alt="" width="100">
+        <img src="../../assets/images_cargadas/<?= $fetch_accounts['Foto']; ?>" alt="" width="100">
         <p> Nombre administrador: <span><?= $fetch_accounts['Nombre']; ?></span> </p>
         <div class="flex-btn">
-          <a href="update_profile.php?delete=<?= $fetch_accounts['IdAmin']; ?>"
+          <a href="./update_profile.php?delete=<?= $fetch_accounts['IdAmin']; ?>"
             onclick="return confirm('¿Quieres eliminar esta cuenta?')" class="delete-btn">Eliminar</a>
           <?php
             if($fetch_accounts['IdAmin'] == $admin_id){
-              echo '<a href="update_profile.php" class="option-btn">Actualizar</a>';
+              echo '<a href="update_profile.php?update= .$admin_id. " class="option-btn">Actualizar</a>';
             }
           ?>
         </div>
@@ -77,10 +77,10 @@ if(isset($_GET['delete'])){
   <!-- Admin accounts section ends -->
 
   <?php
-    include './components/footer.php';
+    include '../../includes/footer.php';
   ?>
   <!-- Custom js file link -->
-  <script src="./js//main.js"></script>
+  <script src="../../assets/js//main.js"></script>
 </body>
 
 </html>

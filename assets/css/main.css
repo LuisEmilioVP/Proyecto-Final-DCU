@@ -566,42 +566,44 @@ section {
 
 /*======== Footer ========*/
 .footer {
-	background-color: var(--white);
+    padding: 10px;
+    background-color: var(--white);
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    text-align: center; /* Centra el contenido del footer */
+    border-top: var(--border);
+    width: 100%; /* Opcional: asegura que el footer ocupe todo el ancho */
 }
 
 .footer .box-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-	gap: 2rem;
-	align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap: 2rem;
+    align-items: flex-start;
 }
 
 .footer .box-container .box h3 {
-	font-size: 2rem;
-	color: var(--black);
-	margin-bottom: 2rem;
-	text-transform: capitalize;
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    text-transform: capitalize;
 }
 
 .footer .box-container .box a {
-	display: block;
-	padding: 1rem 0;
-	font-size: 1.7rem;
-	color: var(--light-color);
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.7rem;
+    color: var(--light-color);
 }
 
 .footer .credit {
-	padding: 2.5rem;
-	text-align: center;
-	font-size: 2rem;
-	border-top: var(--border);
-	padding-bottom: 3.5rem;
+    text-align: center;
+    font-size: 2rem;
+    padding: 2.5rem 0 3.5rem;
 }
 
 .footer .credit span {
-	color: var(--main-color);
+    color: var(--main-color);
 }
-
 /*======== Media queries ========*/
 @media (max-width: 991px) {
 	html {

@@ -1,5 +1,5 @@
 <?php
-include './components/connect.php';
+include '../../includes/connect.php';
 
 session_start();
 
@@ -62,13 +62,13 @@ if(isset($_POST['submit'])){
   <!-- Font awesome cdn link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Custom css file link  -->
-  <link rel="stylesheet" href="./css//main.css">
+  <link rel="stylesheet" href="../../assets/css//main.css">
 </head>
 
 <body>
 
   <?php 
-    include './components/header.php';
+    include '../../includes/header.php';
   ?>
 
   <!-- Admin profile update section starts -->
@@ -96,10 +96,10 @@ if(isset($_POST['submit'])){
   <!-- Admin profile update section ends -->
 
   <?php
-  include './components/footer.php';
+  include '../../includes/footer.php';
   ?>
   <!-- Custom js file link -->
-  <script src="./js//main.js"></script>
+  <script src="../../assets/main.js"></script>
 </body>
 
 </html>
