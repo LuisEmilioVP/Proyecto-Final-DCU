@@ -47,6 +47,8 @@ if(isset($_POST['add_profesor'])){
 
     $insert_admin->execute([$name, $lastname, $gender, $age, $email, $phone, $direction, $specialty, $profesor_image]);
     $message[] = '¡Nuevo profesor registrado!';
+
+    header('location:./profesores_profile.php');
   }
 };
 
@@ -61,7 +63,7 @@ if (isset($_GET['delete'])) {
   $delete_product = $connect->prepare("DELETE FROM `profesor` WHERE IdProfesor = ?");
   $delete_product->execute([$delete_id]);
   
-  header('location:../registro_profesor.php');
+  header('location:./profesores_profile.php');
 };
 ?>
 
