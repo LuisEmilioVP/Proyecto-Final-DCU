@@ -50,9 +50,19 @@ if(isset($_GET['delete'])){
     <h1 class="heading">Estudiantes</h1>
     <div class="box-container">
       <div class="box">
-        <p>Agregar nuevo estudiante</p>
+        <?php 
+          $select_admins = $connect->prepare("SELECT * FROM `estudiante`");
+          $select_admins->execute();
+          $number_of_admins = $select_admins->rowCount();
+        ?>
+        <p>Estudiantes agregadas</p>
+        <p><?= $number_of_admins; ?></p>
         <a href="registro_estudiante.php" class="option-btn">registrar estudiante</a>
       </div>
+    </div>
+    <br>
+    <br>
+    <div class="box-container">
       <?php 
             $show_admin = $connect->prepare("SELECT * FROM `estudiante`");
             $show_admin->execute();
@@ -69,7 +79,7 @@ if(isset($_GET['delete'])){
         <a href="registro_estudiante.php?delete=<?= $fetch_admin['IdEstudiante']; ?>" class="delete-btn"
           onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
       </div>
-    <?php 
+      <?php 
             }
             }else{
             echo '<p class="empty">¡Aún no se han añadido estudiantes!</p>';

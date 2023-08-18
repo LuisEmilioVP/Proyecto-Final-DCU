@@ -96,7 +96,7 @@ CREATE TABLE `estudiante` (
 CREATE TABLE `estudiante_materia` (
   `IdMateria` int DEFAULT NULL,
   `IdEstudiante` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
