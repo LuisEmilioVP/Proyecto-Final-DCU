@@ -63,9 +63,8 @@ if (isset($_GET['delete'])) {
     <table>
       <thead>
         <th>Número Aula</th>
-        <th>Capasidad</th>
+        <th>Capacidad</th>
         <th>Tipo</th>
-        <th>Materias</th>
         <th>Acción</th>
       </thead>
 
@@ -75,17 +74,11 @@ if (isset($_GET['delete'])) {
           $show_aula->execute();
           if ($show_aula->rowCount() > 0) {
             while ($fetch_aula = $show_aula->fetch(PDO::FETCH_ASSOC)) {
-              $materia_id = $fetch_aula['IdMateria'];
-              $get_materia = $connect->prepare("SELECT NombreMateria FROM `materia` WHERE IdMateria  = :idMateria");
-              $get_materia->bindParam(':idMateria', $materia_id);
-              $get_materia->execute();
-              $materia = $get_materia->fetch(PDO::FETCH_ASSOC);
           ?>
         <tr>
           <td><?php echo $fetch_aula['NúmeroAula']; ?></td>
           <td><?php echo $fetch_aula['Capacidad']; ?></td>
           <td><?php echo $fetch_aula['Tipo']; ?></td>
-          <td><?php echo $materia['NombreMateria']; ?></td>
           <td>
             <a href="aulas_profile.php?delete=<?php echo $fetch_aula['IdAula']; ?>" class="delete-btn"
               onclick="return confirm('¿Estás seguro de que quieres eliminar esto?');"> <i class="fas fa-trash"></i></a>

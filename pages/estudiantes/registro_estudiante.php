@@ -46,6 +46,8 @@ if(isset($_POST['add_estudiante'])){
 
     $insert_admin->execute([$name, $lastname, $gender, $age, $email, $phone, $direction, $estudiante_image]);
     $message[] = '¡Nuevo estudiante registrado!';
+
+    header('location:./estudiantes_profile.php');
   }
 };
 
@@ -60,7 +62,7 @@ if (isset($_GET['delete'])) {
   $delete_product = $connect->prepare("DELETE FROM `estudiante` WHERE IdEstudiante = ?");
   $delete_product->execute([$delete_id]);
   
-  header('location:../estudiantes.profile.php');
+  header('location:./estudiantes_profile.php');
 };
 ?>
 

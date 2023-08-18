@@ -55,7 +55,7 @@ if(isset($_GET['delete'])){
           $select_admins->execute();
           $number_of_admins = $select_admins->rowCount();
         ?>
-        <p>Profesores agregadas</p>
+        <p>Profesores Agregados</p>
         <p><?= $number_of_admins; ?></p>
         <a href="registro_profesor.php" class="option-btn">registrar profesor</a>
       </div>
@@ -80,13 +80,13 @@ if(isset($_GET['delete'])){
         <a href="registro_profesor.php?delete=<?= $fetch_admin['IdProfesor']; ?>" class="delete-btn"
           onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
       </div>
-    </div>
     <?php 
             }
             }else{
             echo '<p class="empty">¡Aún no se han añadido profesores!</p>';
             }
     ?>
+    </div>
   </section>
   <!-- Admin accounts section ends -->
 

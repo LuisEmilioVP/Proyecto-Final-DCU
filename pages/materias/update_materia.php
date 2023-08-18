@@ -22,13 +22,15 @@
     $teacher = $_POST['teacher'];
     $teacher = filter_var($teacher, FILTER_SANITIZE_STRING);
     
-    $student = $_POST['student'];
-    $student = filter_var($student, FILTER_SANITIZE_STRING);
+    $aula = $_POST['aula'];
+    $aula = filter_var($aula, FILTER_SANITIZE_STRING);
 
-     $update_admin = $connect->prepare("UPDATE `materia` SET NombreMateria = ?, Descripción = ?, IdProfesor = ?, IdEstudiante = ? WHERE IdMateria = ?");
-     $update_admin->execute([$name_mate, $description, $teacher, $student, $id]);
+     $update_admin = $connect->prepare("UPDATE `materia` SET NombreMateria = ?, Descripción = ?, IdProfesor = ?, IdAula = ? WHERE IdMateria = ?");
+     $update_admin->execute([$name_mate, $description, $teacher, $aula, $id]);
 
      $message[] = 'Materia actualizado con éxito!';
+
+     header('location:./materias_profile.php');
   }
 ?>
 
@@ -82,13 +84,13 @@
         <?php
         $selectedItem = $fetch_admin['IdProfesor'];
         
-        $show_materias = $connect->prepare("SELECT IdProfesor, Nombre FROM `profesor`");
-        $show_materias->execute();
+        $show_profesor = $connect->prepare("SELECT IdProfesor, Nombre FROM `profesor`");
+        $show_profesor->execute();
         
-        if ($show_materias->rowCount() > 0) {
-          while ($fetch_materia = $show_materias->fetch(PDO::FETCH_ASSOC)) {
-            $profeId = $fetch_materia['IdProfesor'];
-            $nombreprofe = $fetch_materia['Nombre'];
+        if ($show_profesor->rowCount() > 0) {
+          while ($fetch_profesor = $show_profesor->fetch(PDO::FETCH_ASSOC)) {
+            $profeId = $fetch_profesor['IdProfesor'];
+            $nombreprofe = $fetch_profesor['Nombre'];
             $selected = ($profeId == $selectedItem) ? 'selected' : '';
             ?>
         <option value="<?php echo $profeId; ?>" <?php echo $selected; ?>>
@@ -103,33 +105,33 @@
       </select>
 
       <span>Estudiante (requerido)</span>
-      <select name="student" class="box">
+      <select name="aula" class="box">
         <?php
-        $selectedItem = $fetch_admin['IdEstudiante'];
+        $selectedItem = $fetch_admin['IdAula'];
         
-        $show_materias = $connect->prepare("SELECT IdEstudiante , Nombre FROM `estudiante`");
-        $show_materias->execute();
+        $show_aula = $connect->prepare("SELECT IdAula, NúmeroAula FROM `aula`");
+        $show_aula->execute();
         
-        if ($show_materias->rowCount() > 0) {
-          while ($fetch_materia = $show_materias->fetch(PDO::FETCH_ASSOC)) {
-            $profeId = $fetch_materia['IdEstudiante'];
-            $nombresdudent = $fetch_materia['Nombre'];
-            $selected = ($profeId == $selectedItem) ? 'selected' : '';
+        if ($show_aula->rowCount() > 0) {
+          while ($fetch_aula = $show_aula->fetch(PDO::FETCH_ASSOC)) {
+            $aulaId = $fetch_aula['IdAula'];
+            $numeroAula = $fetch_aula['NúmeroAula'];
+            $selected = ($aulaId == $selectedItem) ? 'selected' : '';
             ?>
-        <option value="<?php echo $profeId; ?>" <?php echo $selected; ?>>
-          <?php echo $nombresdudent; ?>
+        <option value="<?php echo $aulaId; ?>" <?php echo $selected; ?>>
+          <?php echo $numeroAula; ?>
         </option>
         <?php
           }
         } else {
-          echo '<option disabled>Estudiantes no disponibles</option>';
+          echo '<option disabled>Aulas no disponibles</option>';
         }
       ?>
       </select>
 
       <div class="flex-btn">
         <input type="submit" name="update" value="Actualizar" class="btn">
-        <a href="materias_profile.php" class="option-btn">Regresa</a>
+        <a href="materias_profile.php" class="option-btn">Regresar</a>
       </div>
     </form>
     <?php 

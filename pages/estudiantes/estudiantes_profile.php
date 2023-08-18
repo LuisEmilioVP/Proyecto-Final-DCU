@@ -69,13 +69,13 @@ if(isset($_GET['delete'])){
         <a href="registro_estudiante.php?delete=<?= $fetch_admin['IdEstudiante']; ?>" class="delete-btn"
           onclick="return confirm('¿Estas seguro de eliminar este producto?');">Eliminar</a>
       </div>
-    </div>
     <?php 
             }
             }else{
             echo '<p class="empty">¡Aún no se han añadido estudiantes!</p>';
             }
     ?>
+    </div>
   </section>
   <!-- Admin accounts section ends -->
 

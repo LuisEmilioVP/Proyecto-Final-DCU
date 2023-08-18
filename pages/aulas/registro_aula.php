@@ -19,29 +19,18 @@ if(isset($_POST['add_aula'])){
   $type_aula = $_POST['type_aula'];
   $type_aula = filter_var($type_aula, FILTER_SANITIZE_STRING);
 
-  $subject = $_POST['subject'];
-  $subject = filter_var($subject, FILTER_SANITIZE_STRING);
-
-  // Obtener el IdMateria correspondiente al nombre de materia seleccionado
-  $get_materia_id = $connect->prepare("SELECT IdMateria FROM `materia` WHERE NombreMateria = ?");
-  $get_materia_id->execute([$subject]);
-    
-  if ($get_materia_id->rowCount() > 0) {
-      $materia_id = $get_materia_id->fetch(PDO::FETCH_ASSOC)['IdMateria'];
-
-      $select_aula = $connect->prepare("SELECT * FROM `aula` WHERE NúmeroAula = ?");
+  $select_aula = $connect->prepare("SELECT * FROM `aula` WHERE NúmeroAula = ?");
       $select_aula->execute([$num_aula]);
 
-      if ($select_aula->rowCount() > 0) {
-          $message[] = 'Número de aula ya existe!';
-      } else {
-          $insert_aula = $connect->prepare("INSERT INTO `aula`(NúmeroAula, Capacidad, Tipo, IdMateria) VALUES(?,?,?,?)");
-          $insert_aula->execute([$num_aula, $ability, $type_aula, $materia_id]);
-          $message[] = '¡Nueva aula registrado!';
-      }
-    } else {
-        $message[] = 'Materia seleccionada no válida!';
-    }
+  if ($select_aula->rowCount() > 0) {
+      $message[] = 'Número de aula ya existe!';
+  } else {
+      $insert_aula = $connect->prepare("INSERT INTO `aula`(NúmeroAula, Capacidad, Tipo) VALUES(?,?,?)");
+      $insert_aula->execute([$num_aula, $ability, $type_aula]);
+      $message[] = '¡Nueva aula registrado!';
+
+      header('location:./aulas_profile.php');
+  }
 }
 ?>
 
@@ -75,49 +64,26 @@ if(isset($_POST['add_aula'])){
       <div class="flex">
         <div class="inputBox">
           <span>Numero Aula (requerido)</span>
-          <input type="text" name="num_aula" class="box" maxlelegth="100" placeholder="Ingrese el número de aula"
+          <input type="text" name="num_aula" class="box" maxlegth="100" placeholder="Ingrese el número de aula"
             required>
         </div>
 
         <div class="inputBox">
-          <span>Capasidad (requrido)</span>
-          <input type="text" name="ability" class="box" maxlelegth="100" placeholder="Ingrese capacidad del aula"
+          <span>Capacidad (requerido)</span>
+          <input type="text" name="ability" class="box" maxlegth="100" placeholder="Ingrese capacidad del aula"
             required>
         </div>
 
         <div class="inputBox">
-          <span>Tipo (requrido)</span>
+          <span>Tipo (requerido)</span>
           <select name="type_aula" class="select">
             <option selected disabled>Seleccione el tipo de aula</option>
             <option value="Laboratorio">Laboratorio</option>
             <option value="Teórica">Teórica</option>
           </select>
         </div>
-
-        <div class="inputBox">
-          <span>Materias (requerido)</span>
-          <select name="subject" class="select">
-            <option selected disabled>Seleccione una materia</option>
-            <?php
-              $show_aula = $connect->prepare("SELECT NombreMateria FROM `materia`");
-              $show_aula->execute();
-              if ($show_aula->rowCount() > 0) {
-              while ($fetch_aula = $show_aula->fetch(PDO::FETCH_ASSOC)) {
-                // Aquí obtenemos los datos de la tabla "materia"
-                $numeroAula = $fetch_aula['NombreMateria'];
-            ?>
-            <option value="<?php echo $numeroAula; ?>"><?php echo $numeroAula; ?></option>
-            <?php
-            }
-          } else {
-            echo '<option disabled>No hay Aulas disponibles</option>';
-          }
-          ?>
-          </select>
-        </div>
-
-        <input type="submit" value="Agregar Administrador" class="btn" name="add_aula">
-        <a href="aulas_profile.php" class="option-btn">Regresa</a>
+        <input type="submit" value="Agregar Aula" class="btn" name="add_aula">
+        <a href="aulas_profile.php" class="option-btn">Regresar</a>
       </div>
     </form>
   </section>

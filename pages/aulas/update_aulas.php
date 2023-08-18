@@ -21,15 +21,13 @@
     
     $type_aula = $_POST['type_aula'];
     $type_aula = filter_var($type_aula, FILTER_SANITIZE_STRING);
-    
-    $subject = $_POST['subject'];
-    $subject = filter_var($subject, FILTER_SANITIZE_STRING);
-
-
-     $update_admin = $connect->prepare("UPDATE `aula` SET NúmeroAula = ?, Capacidad = ?, Tipo = ?, IdMateria = ? WHERE IdAula = ?");
-     $update_admin->execute([$num_aula, $ability, $type_aula, $subject, $id]);
+  
+     $update_admin = $connect->prepare("UPDATE `aula` SET NúmeroAula = ?, Capacidad = ?, Tipo = ? WHERE IdAula = ?");
+     $update_admin->execute([$num_aula, $ability, $type_aula, $id]);
 
      $message[] = 'Aula actualizado con éxito!';
+
+     header('location:./aulas_profile.php');
   }
 ?>
 
@@ -81,38 +79,13 @@
       <span>Actualizar Tip de Aulao</span>
       <select name="type_aula" class="box" required>
         <option selected disabled><?= $fetch_admin['Tipo']; ?></option>
-        <option value="Masculino">Laboratorio</option>
-        <option value="Femenino">Teórica</option>
-      </select>
-
-      <span>Materias (requerido)</span>
-      <select name="subject" class="box">
-        <?php
-        $selectedMateriaId = $fetch_admin['IdMateria'];
-        
-        $show_materias = $connect->prepare("SELECT IdMateria, NombreMateria FROM `materia`");
-        $show_materias->execute();
-        
-        if ($show_materias->rowCount() > 0) {
-          while ($fetch_materia = $show_materias->fetch(PDO::FETCH_ASSOC)) {
-            $materiaId = $fetch_materia['IdMateria'];
-            $nombreMateria = $fetch_materia['NombreMateria'];
-            $selected = ($materiaId == $selectedMateriaId) ? 'selected' : '';
-            ?>
-        <option value="<?php echo $materiaId; ?>" <?php echo $selected; ?>>
-          <?php echo $nombreMateria; ?>
-        </option>
-        <?php
-          }
-        } else {
-          echo '<option disabled>No hay materias disponibles</option>';
-        }
-      ?>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Teórica">Teórica</option>
       </select>
 
       <div class="flex-btn">
         <input type="submit" name="update" value="Actualizar" class="btn">
-        <a href="aulas_profile.php" class="option-btn">Regresa</a>
+        <a href="aulas_profile.php" class="option-btn">Regresar</a>
       </div>
     </form>
     <?php 

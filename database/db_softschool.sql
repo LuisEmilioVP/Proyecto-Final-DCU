@@ -1,11 +1,15 @@
+-- DROP DATABASE `db_softschool`;
+-- CREATE DATABASE `db_softschool`;
+-- USE `db_softschool`;
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-08-2023 a las 04:20:20
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Host: localhost:3306
+-- Generation Time: Aug 18, 2023 at 01:46 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,29 +22,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_softschool`
+-- Database: `db_softschool`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administrativo`
+-- Table structure for table `administrativo`
 --
 
 CREATE TABLE `administrativo` (
-  `IdAmin` int(100) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Genero` varchar(10) NOT NULL,
-  `Correo` varchar(100) NOT NULL,
-  `Telefono` varchar(15) NOT NULL,
-  `Cargo` varchar(50) NOT NULL,
-  `Foto` varchar(100) NOT NULL,
-  `Clave` varchar(50) NOT NULL
+  `IdAmin` int NOT NULL,
+  `Nombre` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Apellido` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Genero` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Correo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Telefono` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `Cargo` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Foto` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Clave` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `administrativo`
+-- Dumping data for table `administrativo`
 --
 
 INSERT INTO `administrativo` (`IdAmin`, `Nombre`, `Apellido`, `Genero`, `Correo`, `Telefono`, `Cargo`, `Foto`, `Clave`) VALUES
@@ -50,170 +54,151 @@ INSERT INTO `administrativo` (`IdAmin`, `Nombre`, `Apellido`, `Genero`, `Correo`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `aula`
+-- Table structure for table `aula`
 --
 
 CREATE TABLE `aula` (
-  `IdAula` int(100) NOT NULL,
-  `NúmeroAula` varchar(10) NOT NULL,
-  `Capacidad` int(30) NOT NULL,
-  `Tipo` varchar(20) NOT NULL,
-  `IdMateria` int(100) NOT NULL
+  `IdAula` int NOT NULL,
+  `NúmeroAula` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Capacidad` int NOT NULL,
+  `Tipo` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `aula`
+--
+
+INSERT INTO `aula` (`IdAula`, `NúmeroAula`, `Capacidad`, `Tipo`) VALUES
+(1, '1 A2', 35, 'Teórica');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estudiante`
+-- Table structure for table `estudiante`
 --
 
 CREATE TABLE `estudiante` (
-  `IdEstudiante` int(100) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Edad` int(25) NOT NULL,
-  `Genero` varchar(10) NOT NULL,
-  `Correo` varchar(100) NOT NULL,
-  `Telefono` varchar(15) NOT NULL,
-  `Direccion` varchar(155) NOT NULL,
-  `Foto` varchar(100) NOT NULL
+  `IdEstudiante` int NOT NULL,
+  `Nombre` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Apellido` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Edad` int NOT NULL,
+  `Genero` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Correo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Telefono` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `Direccion` varchar(155) COLLATE utf8mb4_general_ci NOT NULL,
+  `Foto` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `estudiante`
+-- Table structure for table `estudiante_materia`
 --
 
-INSERT INTO `estudiante` (`IdEstudiante`, `Nombre`, `Apellido`, `Edad`, `Genero`, `Correo`, `Telefono`, `Direccion`, `Foto`) VALUES
-(1, 'Camilo', 'Abreu', 16, 'Masculino', 'camiloaub@gmail.com', '(809) 254-6987', 'Ensanche la fe no.27', '');
+CREATE TABLE `estudiante_materia` (
+  `IdMateria` int DEFAULT NULL,
+  `IdEstudiante` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materia`
+-- Table structure for table `materia`
 --
 
 CREATE TABLE `materia` (
-  `IdMateria` int(100) NOT NULL,
-  `NombreMateria` varchar(50) NOT NULL,
-  `Descripción` varchar(40) NOT NULL,
-  `IdProfesor` int(100) NOT NULL,
-  `IdEstudiante` int(100) NOT NULL
+  `IdMateria` int NOT NULL,
+  `NombreMateria` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Descripción` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
+  `IdProfesor` int NOT NULL,
+  `IdAula` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `materia`
+--
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `profesor`
+-- Table structure for table `profesor`
 --
 
 CREATE TABLE `profesor` (
-  `IdProfesor` int(100) NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Genero` varchar(10) NOT NULL,
-  `Edad` int(25) NOT NULL,
-  `Correo` varchar(100) NOT NULL,
-  `Telefono` varchar(15) NOT NULL,
-  `Direccion` varchar(100) NOT NULL,
-  `Especialidad` varchar(50) NOT NULL,
-  `Foto` varchar(100) NOT NULL
+  `IdProfesor` int NOT NULL,
+  `Nombre` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Apellido` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Genero` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Edad` int NOT NULL,
+  `Correo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Telefono` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `Direccion` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `Especialidad` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Foto` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `profesor`
+-- Dumping data for table `profesor`
 --
-
-INSERT INTO `profesor` (`IdProfesor`, `Nombre`, `Apellido`, `Genero`, `Edad`, `Correo`, `Telefono`, `Direccion`, `Especialidad`, `Foto`) VALUES
-(1, 'Fransis', 'Ramirez', 'Masculino', 34, 'fransisrm@gmail.com', '(809) 265-5987', 'Polígono Jorge Orellana s/n. - Wheaton, Mur / 55650', 'Ingeniería de Software', ''),
-(2, 'Raidelto', 'Hernandez', 'Masculino', 41, 'raideltohrz@gmail.com', '(829) 469-5422', 'Colonia Anita, 41 - Cleveland Heights, And / 59432', 'Desarrollador Web', '');
-
 --
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `administrativo`
+-- Indexes for table `administrativo`
 --
 ALTER TABLE `administrativo`
   ADD PRIMARY KEY (`IdAmin`);
 
 --
--- Indices de la tabla `aula`
+-- Indexes for table `aula`
 --
 ALTER TABLE `aula`
-  ADD PRIMARY KEY (`IdAula`),
-  ADD KEY `IdMateria` (`IdMateria`);
+  ADD PRIMARY KEY (`IdAula`);
 
 --
--- Indices de la tabla `estudiante`
+-- Indexes for table `estudiante`
 --
 ALTER TABLE `estudiante`
   ADD PRIMARY KEY (`IdEstudiante`);
 
 --
--- Indices de la tabla `materia`
+-- Indexes for table `estudiante_materia`
+--
+ALTER TABLE `estudiante_materia`
+  ADD KEY `IdMateria` (`IdMateria`),
+  ADD KEY `IdEstudiante` (`IdEstudiante`);
+
+--
+-- Indexes for table `materia`
 --
 ALTER TABLE `materia`
   ADD PRIMARY KEY (`IdMateria`),
   ADD KEY `IdProfesor` (`IdProfesor`),
-  ADD KEY `IdEstudiante` (`IdEstudiante`);
+  ADD KEY `IdAula` (`IdAula`);
 
 --
--- Indices de la tabla `profesor`
+-- Indexes for table `profesor`
 --
 ALTER TABLE `profesor`
   ADD PRIMARY KEY (`IdProfesor`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `administrativo`
+-- AUTO_INCREMENT for table `administrativo`
 --
 ALTER TABLE `administrativo`
-  MODIFY `IdAmin` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `IdAmin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `aula`
+-- Constraints for table `estudiante_materia`
 --
-ALTER TABLE `aula`
-  MODIFY `IdAula` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `estudiante_materia`
+  ADD CONSTRAINT `estudiante_materia_ibfk_1` FOREIGN KEY (`IdMateria`) REFERENCES `materia` (`IdMateria`),
+  ADD CONSTRAINT `estudiante_materia_ibfk_2` FOREIGN KEY (`IdEstudiante`) REFERENCES `estudiante` (`IdEstudiante`);
 
 --
--- AUTO_INCREMENT de la tabla `estudiante`
---
-ALTER TABLE `estudiante`
-  MODIFY `IdEstudiante` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `materia`
---
-ALTER TABLE `materia`
-  MODIFY `IdMateria` int(100) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `profesor`
---
-ALTER TABLE `profesor`
-  MODIFY `IdProfesor` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `aula`
---
-ALTER TABLE `aula`
-  ADD CONSTRAINT `aula_ibfk_1` FOREIGN KEY (`IdMateria`) REFERENCES `materia` (`IdMateria`);
-
---
--- Filtros para la tabla `materia`
+-- Constraints for table `materia`
 --
 ALTER TABLE `materia`
   ADD CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`IdProfesor`) REFERENCES `profesor` (`IdProfesor`),
-  ADD CONSTRAINT `materia_ibfk_2` FOREIGN KEY (`IdEstudiante`) REFERENCES `estudiante` (`IdEstudiante`);
+  ADD CONSTRAINT `materia_ibfk_2` FOREIGN KEY (`IdAula`) REFERENCES `aula` (`IdAula`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

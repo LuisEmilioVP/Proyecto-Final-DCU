@@ -54,7 +54,17 @@ if (isset($_GET['delete'])) {
         ?>
         <p>Materias Agregadas</p>
         <p><?= $number_of_admins; ?></p>
-        <a href="registro_materia.php" class="option-btn">registrar aula</a>
+        <a href="registro_materia.php" class="option-btn">Registrar Materia</a>
+      </div>
+      <div class="box">
+        <?php 
+          $select_students = $connect->prepare("SELECT * FROM `estudiante`");
+          $select_students->execute();
+          $number_of_students = $select_students->rowCount();
+        ?>
+        <p>Estudiantes Registrados</p>
+        <p><?= $number_of_students; ?></p>
+        <a href="estudiante_materia.php" class="option-btn">Agregar Estudiante</a>
       </div>
     </div>
   </section>
@@ -65,8 +75,9 @@ if (isset($_GET['delete'])) {
       <thead>
         <th>Materia</th>
         <th>Descripción</th>
-        <th>Preofesor Asignado</th>
-        <th>Alunnos Registrados</th>
+        <th>Profesor Asignado</th>
+        <th>Aula</th>
+        <th>Alumnos Registrados</th>
         <th>Acción</th>
       </thead>
 
@@ -81,17 +92,25 @@ if (isset($_GET['delete'])) {
               $get_profesor->bindParam(':IdProfesor', $profesor_id);
               $get_profesor->execute();
               $profesor = $get_profesor->fetch(PDO::FETCH_ASSOC);
+
+              $aula_id = $fetch_accounts['IdAula'];
+              $get_aula = $connect->prepare("SELECT NúmeroAula FROM `aula` WHERE IdAula  = :IdAula");
+              $get_aula->bindParam(':IdAula', $aula_id);
+              $get_aula->execute();
+              $aula= $get_aula->fetch(PDO::FETCH_ASSOC);
         ?>
         <tr>
           <td><?php echo $fetch_accounts['NombreMateria']; ?></td>
           <td><?php echo $fetch_accounts['Descripción']; ?></td>
           <td><?php echo $profesor['Nombre']; ?></td>
+          <td><?php echo $aula['NúmeroAula']; ?></td>
           <?php 
-          $select_admins = $connect->prepare("SELECT * FROM `estudiante`");
-          $select_admins->execute();
+          $select_admins = $connect->prepare("SELECT * FROM `estudiante_materia` Where IdMateria = ?");
+          $id = $fetch_accounts['IdMateria'];
+          $select_admins->execute([$id]);
           $number_of_admins = $select_admins->rowCount();
           ?>
-          <td><?= $number_of_admins  ?></td>
+          <td><?= $number_of_admins ?></td>
           <td>
             <a href="materias_profile.php?delete=<?php echo $fetch_accounts['IdMateria']; ?>" class="delete-btn"
               onclick="return confirm('¿Estás seguro de que quieres eliminar esto?');"> <i class="fas fa-trash"></i></a>
@@ -103,7 +122,7 @@ if (isset($_GET['delete'])) {
         <?php 
               };
             }else{
-              echo '<p class="empty">¡Aún no se han añadido Aulas!</p>';
+              echo '<p class="empty">¡Aún no se han añadido Materias!</p>';
             }
           ?>
       </tbody>
